@@ -15,12 +15,14 @@
 
 
 		<div class="w-6 h-6 fixed top-0 right-0 my-4 mx-4 sm:hidden z-40 text-lg grid place-content-center" @click="is_open = !is_open">
-			<div v-if="is_open">
-				<i class="fas fa-times"></i>
-			</div>
-			<div v-else>
-				<i class="fas fa-bars"></i>
-			</div>
+			<transition name="menu" mode="out-in">
+				<div v-if="is_open">
+						<i class="fas fa-times"></i>
+				</div>
+				<div v-else>
+					<i class="fas fa-bars"></i>
+				</div>
+			</transition>
 		</div>
 
 		<!-- Mobile Navigation -->
@@ -54,5 +56,13 @@ export default {
 </script>
 
 <style>
+.menu-enter-active,
+.menu-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
 
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
+}
 </style>
