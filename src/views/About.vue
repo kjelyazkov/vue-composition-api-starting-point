@@ -10,6 +10,8 @@ export default {
 	setup() {
 		//
 	},
-
+	mounted() {
+		this.$store.commit('CLOSE_MENU')
+	}
 }
 </script>

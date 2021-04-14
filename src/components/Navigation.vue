@@ -7,8 +7,8 @@
 					LOGO
 				</div>	
 				<div class="sm:flex gap-4 text-gray-600 hidden">
-					<router-link to="/">Home</router-link>
-					<router-link to="/about">About</router-link>
+					
+					
 				</div>	
 			</div>
 		</div>
@@ -28,10 +28,8 @@
 		<!-- Mobile Navigation -->
 		<div class="fixed inset-0 bg-gray-200 z-30 transform transition-transform duration-300 ease-in-out" :class="is_mobile_navigation_open ? 'translate-x-0' : '-translate-x-full'">
 			<div class="mt-24 flex flex-col">
-				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
-				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
-				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
-				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
+				<router-link to="/"><div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Home</div></router-link>
+				<router-link to="/about"><div class="hover:bg-gray-300 py-4 px-2 text-gray-600">About</div></router-link>
 			</div>
 		</div>
 	</div>

@@ -30,5 +30,9 @@ export default {
 		}
 	},
 
+	mounted() {
+		this.$store.commit('CLOSE_MENU')
+	}
+
 }
 </script>
