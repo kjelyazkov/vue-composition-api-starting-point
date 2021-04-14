@@ -14,9 +14,9 @@
 		</div>
 
 
-		<div class="w-6 h-6 fixed top-0 right-0 my-4 mx-4 sm:hidden z-40 text-lg grid place-content-center" @click="is_open = !is_open">
+		<div class="w-6 h-6 fixed top-0 right-0 my-4 mx-4 sm:hidden z-40 text-lg grid place-content-center" @click="toggleMenu()">
 			<transition name="menu" mode="out-in">
-				<div v-if="is_open">
+				<div v-if="is_mobile_navigation_open">
 						<i class="fas fa-times"></i>
 				</div>
 				<div v-else>
@@ -26,7 +26,7 @@
 		</div>
 
 		<!-- Mobile Navigation -->
-		<div class="fixed inset-0 bg-gray-200 z-30 transform transition-transform duration-300 ease-in-out" :class="is_open ? 'translate-x-0' : '-translate-x-full'">
+		<div class="fixed inset-0 bg-gray-200 z-30 transform transition-transform duration-300 ease-in-out" :class="is_mobile_navigation_open ? 'translate-x-0' : '-translate-x-full'">
 			<div class="mt-24 flex flex-col">
 				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
 				<div class="hover:bg-gray-300 py-4 px-2 text-gray-600">Item</div>
@@ -38,16 +38,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-	data() {
-		return {
-			is_open: false
+	name: "Navigation",
+	computed: {
+		...mapState(['is_mobile_navigation_open'])
+	},
+	methods: {
+		toggleMenu() {
+			this.$store.commit('TOGGLE_MENU')
 		}
 	},
 	mounted(){
 		window.addEventListener("resize", () => {
 			if(document.documentElement.clientWidth > 638) {
-				this.is_open = false
+				this.$store.commit('CLOSE_MENU')
 			}
 		});
 	}
